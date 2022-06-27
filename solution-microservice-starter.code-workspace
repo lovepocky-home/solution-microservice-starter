@@ -2,7 +2,13 @@
   "folders": [
     {
       "path": "."
-    }
+    },
+    {
+      "path": "./packages/gateway"
+    },
+    {
+      "path": "./packages/books-service"
+    },
   ],
   "settings": {}
 }
