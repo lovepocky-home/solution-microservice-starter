@@ -66,3 +66,7 @@ graph TD
 ## road map
 
 - [ ] sso
+
+## References
+
+- <https://stackoverflow.com/questions/38071714/when-and-how-to-use-graphql-with-microservice-architecture>

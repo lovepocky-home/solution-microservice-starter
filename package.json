@@ -1,0 +1,19 @@
+{
+  "name": "solution-microservice-starter",
+  "version": "1.0.0",
+  "description": "## why microservice?",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lovepocky-home/solution-microservice-starter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lovepocky-home/solution-microservice-starter/issues"
+  },
+  "homepage": "https://github.com/lovepocky-home/solution-microservice-starter#readme"
+}
