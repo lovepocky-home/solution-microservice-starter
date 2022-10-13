@@ -1,0 +1,48 @@
+version: "3.7"
+services:
+  # --------------------------------------------------------------------------------
+  mysql:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=starter
+      # This variable is optional and allows you to specify the name of a database to be created on image startup. 
+      - MYSQL_DATABASE=casdoor
+    volumes:
+      - $HOME/.data/starter/mysql:/var/lib/mysql
+    ports:
+      - 13306:3306
+    restart: unless-stopped
+
+  redis:
+    image: redis
+
+  mongo:
+    image: mongo
+
+  # --------------------------------------------------------------------------------
+  casdoor:
+    image: casbin/casdoor
+    environment:
+      - driverName=mysql
+      - dataSourceName=root:starter@tcp(mysql:3306)/
+      - dbName=casdoor
+    ports:
+      - 18000:8000
+    depends_on:
+      - mysql
+    volumes:
+      - $HOME/.data/starter/casdoor-files:/files
+    restart: unless-stopped
+
+  apisix:
+    # image: apache/apisix
+    image: apache/apisix:2.14.1-alpine
+    ports:
+      - 9080:9080
+    volumes:
+      - $PWD/dev/apisix-config.yml:/usr/local/apisix/conf/config.yaml
+      - $PWD/dev/apisix.yml:/usr/local/apisix/conf/apisix.yaml
+      # /usr/local/apisix/conf/apisix.yaml
+    restart: unless-stopped
+    network_mode: host
+  # --------------------------------------------------------------------------------

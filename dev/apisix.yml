@@ -1,0 +1,13 @@
+routes:
+  - uri: /*
+    upstream:
+      nodes:
+        "127.0.0.1:13000": 1
+      type: roundrobin
+    plugins:
+      authz-casdoor:
+        endpoint_addr: "http://100.64.0.4:18000"
+        callback_url: "http://100.64.0.4:9080/callback"
+        client_id: "4258350afda9488c02be"
+        client_secret: "07e82ed1b085dfdd2cf8105ceef536d3be5a614e"
+#END
