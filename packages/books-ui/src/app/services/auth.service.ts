@@ -17,6 +17,9 @@ export class AuthService {
   constructor() {
     // @ts-ignore
     window.authService = this
+
+    // TODO env specific params: return from backend
+
     this.logtoClient = new LogtoClient({
       endpoint: 'https://logto.pocki.cc',
       appId: 'AIONBgkMNra8acZnzpDEp',
