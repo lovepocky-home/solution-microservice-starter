@@ -13,10 +13,10 @@ export class AppComponent {
 
   login() {
     console.log('login');
-    this.authService.logtoClient.signIn('http://localhost:14200/callback')
+    this.authService.signIn()
   }
   logout() {
     console.log('logout');
-    this.authService.logtoClient.signOut('http://localhost:14200')
+    this.authService.signOut()
   }
 }
