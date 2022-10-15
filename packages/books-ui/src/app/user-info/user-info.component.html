@@ -1,0 +1,5 @@
+<p>
+  user-info works!
+  {{auth.userInfo?.name}}
+  <img *ngIf="!!auth.userInfo?.picture" [src]="auth.userInfo?.picture" style="width: 60px; height: 60px" />
+</p>

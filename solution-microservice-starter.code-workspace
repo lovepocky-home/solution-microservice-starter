@@ -9,6 +9,9 @@
     {
       "path": "./packages/books-service"
     },
+    {
+      "path": "./packages/books-ui"
+    },
   ],
   "settings": {}
 }
