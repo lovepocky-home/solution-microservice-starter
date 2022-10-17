@@ -9,15 +9,17 @@ export class BooksService {
     return 'This action adds a new book';
   }
 
-  findAll() {
-    return `This action returns all books`;
+  findAll(): Book[] {
+    return [
+      {
+        name: "活着",
+        ISBN: "9787506365437"
+      }
+    ]
   }
 
   findOne(id: number) {
-    return {
-      id,
-      exampleField: ++id
-    } as Book
+    return null
     // return `This action returns a #${id} book`;
   }
 

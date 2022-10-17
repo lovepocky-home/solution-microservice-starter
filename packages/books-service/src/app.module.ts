@@ -12,7 +12,8 @@ import { BooksModule } from './books/books.module';
       driver: ApolloDriver,
       playground: true,
       debug: true,
-      autoSchemaFile: join(process.cwd(), 'src/schema.graphql')
+      autoSchemaFile: join(process.cwd(), 'src/schema.graphql'),
+      useGlobalPrefix: true,
     }),
     BooksModule,
   ],

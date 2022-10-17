@@ -13,5 +13,19 @@
       "path": "./packages/books-ui"
     },
   ],
-  "settings": {}
+  "settings": {
+    "remote.autoForwardPorts": true,
+    "remote.SSH.defaultForwardedPorts": [
+      {
+        "name": "books-ui",
+        "localPort": 14200,
+        "remotePort": 14200
+      },
+      {
+        "name": "books-service",
+        "localPort": 14201,
+        "remotePort": 14201
+      },
+    ]
+  }
 }

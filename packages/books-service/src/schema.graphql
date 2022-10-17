@@ -3,8 +3,9 @@
 # ------------------------------------------------------
 
 type Book {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  """book name"""
+  name: String!
+  ISBN: String
 }
 
 type Query {
