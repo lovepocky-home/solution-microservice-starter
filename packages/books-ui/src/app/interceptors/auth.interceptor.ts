@@ -18,7 +18,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   async handle(request: HttpRequest<unknown>, next: HttpHandler) {
-    if (await this.svc.logtoClient.isAuthenticated()) {
+    if (request.url.includes('api') && await this.svc.logtoClient.isAuthenticated()) {
       console.log('url', request.url);
       const token = await this.svc.logtoClient.getAccessToken(request.url)
       return await lastValueFrom(next.handle(request.clone({

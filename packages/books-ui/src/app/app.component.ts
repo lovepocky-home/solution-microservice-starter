@@ -10,7 +10,7 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   title = 'books-ui';
 
-  constructor(private authService: AuthService, private http: HttpClient) {
+  constructor(public authService: AuthService, private http: HttpClient) {
     // @ts-ignore
     window.http = http
   }

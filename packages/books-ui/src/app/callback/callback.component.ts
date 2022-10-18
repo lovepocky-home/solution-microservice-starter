@@ -26,8 +26,9 @@ export class CallbackComponent implements OnInit {
       // jump
       await this.authService.updateUserInfo()
       await this.router.navigateByUrl('/')
-    } catch {
+    } catch (e) {
       // 处理错误
+      console.error(e)
     }
   }
 

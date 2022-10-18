@@ -449,10 +449,10 @@
     <router-outlet></router-outlet>
     <p>
       <app-user-info></app-user-info>
-      <button (click)="login()">
+      <button *ngIf="!authService.logged" (click)="login()">
         登录
       </button>
-      <button (click)="logout()">
+      <button *ngIf="authService.logged" (click)="logout()">
         退出登录
       </button>
     </p>

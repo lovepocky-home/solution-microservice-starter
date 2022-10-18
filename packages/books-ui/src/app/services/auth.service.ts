@@ -1,45 +1,37 @@
 import { Injectable } from '@angular/core';
 import LogtoClient, { UserInfoResponse } from '@logto/browser';
 import { environment } from '../../environments/environment';
+import { ConfigService } from './config.service';
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
 
   logtoClient: LogtoClient
 
+  logged?: boolean = false
   userInfo?: UserInfoResponse
 
   host: string
 
-  constructor() {
+  constructor(c: ConfigService) {
     // @ts-ignore
     window.authService = this
 
-    // TODO env specific params: return from backend
-
-    this.logtoClient = new LogtoClient({
-      endpoint: 'https://logto.pocki.cc',
-      appId: 'AIONBgkMNra8acZnzpDEp',
-      resources: [
-        'http://localhost:14201/api/graphql'
-      ]
-    });
+    this.logtoClient = new LogtoClient(c.config.logto);
     this.updateUserInfo()
 
-    this.host = 'https://books.pocki.cc'
-    if (!environment.production) {
-      this.host = 'http://localhost:14200'
-    }
-
+    this.host = c.config.host
     console.log(AuthService.name, this.host)
   }
 
   async updateUserInfo() {
+    this.logged = await this.logtoClient.isAuthenticated()
+
     if (!this.userInfo) {
-      if (!await this.logtoClient.isAuthenticated()) return
+      if (!this.logged) return
 
       this.userInfo = await this.logtoClient.fetchUserInfo()
       console.log(this.userInfo);
