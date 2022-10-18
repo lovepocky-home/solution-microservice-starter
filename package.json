@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "books:dev": "pnpm run --filter books-service start:dev -- --preserveWatchOutput",
-    "books:ui:dev": "pnpm run --filter books-ui start -- --host 0.0.0.0 --port 14200",
-    "gateway:dev": "pnpm run --filter gateway dev -- --port 14000",
+    "books:svc:dev": "pnpm run --filter books-service start:dev --preserveWatchOutput",
+    "books:ui:dev": "pnpm run --filter books-ui start --host 0.0.0.0 --port 14200",
+    "gateway:dev": "pnpm run --filter gateway dev --port 14000",
     "dev": "concurrently --restart-after 5000 --restart-tries 3 'npm:books:dev' 'npm:gateway:dev' ",
     "tag": "echo $(git describe)$([[ ! -z $(git status -s) ]] && echo -$(date +'%s'))",
     "build-docker:books-service": "pnpm run --filter books-service build && sudo -E docker build -f ./packages/books-service/Dockerfile -t lovepocky/examples-books-service:$(git describe)$([[ ! -z $(git status -s) ]] && echo -$(date +'%s')) ."

@@ -23,6 +23,9 @@ export class AuthService {
     this.logtoClient = new LogtoClient({
       endpoint: 'https://logto.pocki.cc',
       appId: 'AIONBgkMNra8acZnzpDEp',
+      resources: [
+        'http://localhost:14201/api/graphql'
+      ]
     });
     this.updateUserInfo()
 

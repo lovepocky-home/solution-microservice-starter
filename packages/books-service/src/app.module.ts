@@ -1,10 +1,11 @@
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BooksModule } from './books/books.module';
+import { AuthnMiddleware } from './middlewares/authn.middleware';
 
 @Module({
   imports: [
@@ -20,4 +21,11 @@ import { BooksModule } from './books/books.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(AuthnMiddleware)
+      .forRoutes(
+        'graphql',
+      )
+  }
+}
