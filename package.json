@@ -10,7 +10,8 @@
     "gateway:dev": "pnpm run --filter gateway dev --port 14000",
     "dev": "concurrently --restart-after 5000 --restart-tries 3 'npm:books:dev' 'npm:gateway:dev' ",
     "tag": "echo $(git describe)$([[ ! -z $(git status -s) ]] && echo -$(date +'%s'))",
-    "build-docker:books-service": "pnpm run --filter books-service build && sudo -E docker build -f ./packages/books-service/Dockerfile -t lovepocky/examples-books-service:$(git describe)$([[ ! -z $(git status -s) ]] && echo -$(date +'%s')) ."
+    "build-docker:books-service": "pnpm run --filter books-service build && sudo -E docker build -f ./packages/books-service/Dockerfile -t lovepocky/examples-books-service:$(git describe)$([[ ! -z $(git status -s) ]] && echo -$(date +'%s')) .",
+    "build-docker:books-ui": "pnpm run --filter books-ui build && sudo -E docker build -f ./packages/books-ui/Dockerfile -t lovepocky/examples-books-ui:$(git describe)$([[ ! -z $(git status -s) ]] && echo -$(date +'%s')) ./packages/books-ui"
   },
   "repository": {
     "type": "git",

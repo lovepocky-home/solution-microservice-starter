@@ -3,7 +3,7 @@
 config = {
   configName: "default",
 
-  // backend host
+  // main host
   host: "http://localhost:14200",
 
   // log

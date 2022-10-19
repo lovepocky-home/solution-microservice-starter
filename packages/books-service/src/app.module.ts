@@ -1,5 +1,6 @@
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { AppController } from './app.controller';
@@ -9,6 +10,9 @@ import { AuthnMiddleware } from './middlewares/authn.middleware';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: ['.env.local', '.env']
+    }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       playground: true,

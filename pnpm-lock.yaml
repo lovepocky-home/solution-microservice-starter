@@ -15,6 +15,7 @@ importers:
       '@nestjs/apollo': ^10.0.16
       '@nestjs/cli': ^8.0.0
       '@nestjs/common': ^8.0.0
+      '@nestjs/config': ^2.2.0
       '@nestjs/core': ^8.0.0
       '@nestjs/graphql': ^10.0.16
       '@nestjs/platform-express': ^8.0.0
@@ -47,6 +48,7 @@ importers:
     dependencies:
       '@nestjs/apollo': 10.0.16_6fw7ylp6737m2brvirlgzeqeoa
       '@nestjs/common': 8.4.7_47vcjb2de6lyibr6g4enoa5lyu
+      '@nestjs/config': 2.2.0_g7av3gvncewo44y4rurz3mgav4
       '@nestjs/core': 8.4.7_fkqgj3xrohk2pflugljc4sz7ea
       '@nestjs/graphql': 10.0.16_4fuficvauorxq2cdbnkoqoqq7q
       '@nestjs/platform-express': 8.4.7_7tsmhnugyerf5okgqzer2mfqme
@@ -4916,6 +4918,22 @@ packages:
     transitivePeerDependencies:
       - debug
 
+  /@nestjs/config/2.2.0_g7av3gvncewo44y4rurz3mgav4:
+    resolution: {integrity: sha512-78Eg6oMbCy3D/YvqeiGBTOWei1Jwi3f2pSIZcZ1QxY67kYsJzTRTkwRT8Iv30DbK0sGKc1mcloDLD5UXgZAZtg==}
+    peerDependencies:
+      '@nestjs/common': ^7.0.0 || ^8.0.0 || ^9.0.0
+      reflect-metadata: ^0.1.13
+      rxjs: ^6.0.0 || ^7.2.0
+    dependencies:
+      '@nestjs/common': 8.4.7_47vcjb2de6lyibr6g4enoa5lyu
+      dotenv: 16.0.1
+      dotenv-expand: 8.0.3
+      lodash: 4.17.21
+      reflect-metadata: 0.1.13
+      rxjs: 7.5.5
+      uuid: 8.3.2
+    dev: false
+
   /@nestjs/core/8.4.7_fkqgj3xrohk2pflugljc4sz7ea:
     resolution: {integrity: sha512-XB9uexHqzr2xkPo6QSiQWJJttyYYLmvQ5My64cFvWFi7Wk2NIus0/xUNInwX3kmFWB6pF1ab5Y2ZBvWdPwGBhw==}
     requiresBuild: true
@@ -7903,6 +7921,11 @@ packages:
     dependencies:
       no-case: 3.0.4
       tslib: 2.4.0
+    dev: false
+
+  /dotenv-expand/8.0.3:
+    resolution: {integrity: sha512-SErOMvge0ZUyWd5B0NXMQlDkN+8r+HhVUsxgOO7IoPDOdDRD2JjExpN6y3KnFR66jsJMwSn1pqIivhU5rcJiNg==}
+    engines: {node: '>=12'}
     dev: false
 
   /dotenv/16.0.1:

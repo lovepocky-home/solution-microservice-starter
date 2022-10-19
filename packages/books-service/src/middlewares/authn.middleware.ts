@@ -2,6 +2,7 @@ import { Injectable, Logger, NestMiddleware, UnauthorizedException } from '@nest
 import { Request, Response, NextFunction } from 'express';
 import { createRemoteJWKSet, jwtVerify } from 'jose';
 import { IncomingHttpHeaders } from 'http';
+import { ConfigService } from '@nestjs/config';
 
 const bearerTokenIdentifier = 'Bearer'
 
@@ -21,14 +22,20 @@ const extractBearerTokenFromHeaders = ({ authorization }: IncomingHttpHeaders) =
 
 @Injectable()
 export class AuthnMiddleware implements NestMiddleware {
+
+  host = this.config.get('logto.host')
+  audienceHost = this.config.get('logto.audience_host')
+
+  constructor(private config: ConfigService) { }
+
   async use(req: Request, res: Response, next: NextFunction) {
     // 从请求头中获取令牌
     const token = extractBearerTokenFromHeaders(req.headers);
 
-    // Logger.log(`${req.method} ${req.baseUrl} (${token})`)
+    const { host, audienceHost } = this
 
-    const host = 'logto.pocki.cc'
-    const audience = 'http://localhost:14201/api/graphql'
+    const audience = audienceHost + req.baseUrl
+    // Logger.log(`${req.method} ${req.baseUrl} (${host}, ${audience})`)
 
     try {
       const { payload } = await jwtVerify(
@@ -49,6 +56,7 @@ export class AuthnMiddleware implements NestMiddleware {
       // Logger.log(`${req.method} ${req.baseUrl} (${userId})`)
       next();
     } catch (e) {
+      Logger.warn(`${req.method} ${req.baseUrl} (${host}, ${audience})`)
       throw new UnauthorizedException(e)
     }
 
