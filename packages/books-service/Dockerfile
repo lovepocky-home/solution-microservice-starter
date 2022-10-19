@@ -26,5 +26,6 @@ WORKDIR /app
 
 COPY --from=pruned /app/pruned .
 COPY packages/books-service/dist dist
+COPY .env .
 
 CMD ["npm", "run", "start:prod"]
