@@ -23,12 +23,42 @@ const extractBearerTokenFromHeaders = ({ authorization }: IncomingHttpHeaders) =
 @Injectable()
 export class AuthnMiddleware implements NestMiddleware {
 
+  logger = new Logger(AuthnMiddleware.name)
+
   host = this.config.get('logto.host')
   audienceHost = this.config.get('logto.audience_host')
 
-  constructor(private config: ConfigService) { }
+  enable: boolean
+  debug: boolean
+
+  constructor(private config: ConfigService) {
+    this.enable = this.config.get('authn.enable') == 'true'
+    this.debug = this.config.get('authn.debug') == 'true'
+    this.logger.log(`enabled: ${this.enable}, debug: ${this.debug}`)
+  }
 
   async use(req: Request, res: Response, next: NextFunction) {
+
+    const { debug, logger } = this
+
+    if (debug) {
+      // logger.debug(req.headers)
+      // logger.debug(req.headers['x-userinfo'])
+    }
+
+    // get user id from header
+
+    if (req.headers['x-userinfo']) {
+      const userInfo = JSON.parse(Buffer.from(req.headers['x-userinfo'].toString(), 'base64').toString('utf-8'))
+      const { sub: userId } = userInfo
+      // if (debug) logger.debug(userInfo)
+      if (debug) logger.debug(`${req.method} ${req.baseUrl} from ${userId}`)
+    }
+
+    if (!this.enable) {
+      return next()
+    }
+
     // 从请求头中获取令牌
     const token = extractBearerTokenFromHeaders(req.headers);
 

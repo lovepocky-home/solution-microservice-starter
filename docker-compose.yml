@@ -36,12 +36,15 @@ services:
 
   apisix:
     # image: apache/apisix
-    image: apache/apisix:2.14.1-alpine
-    ports:
-      - 9080:9080
+    # image: apache/apisix:2.14.1-alpine
+    image: apache/apisix:2.15.0-alpine
+    # ports:
+    #   - 9080:9080
     volumes:
       - $PWD/dev/apisix-config.yml:/usr/local/apisix/conf/config.yaml
       - $PWD/dev/apisix.yml:/usr/local/apisix/conf/apisix.yaml
+      - $PWD/dev/apisix-debug.yml:/usr/local/apisix/conf/debug.yaml
+      - $PWD/dev/openid-connect.lua:/usr/local/apisix/apisix/plugins/openid-connect.lua
       # /usr/local/apisix/conf/apisix.yaml
     restart: unless-stopped
     network_mode: host

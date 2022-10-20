@@ -16,7 +16,9 @@ export class AuthService {
 
   host: string
 
-  constructor(c: ConfigService) {
+  resources = this.c.config.logto.resources
+
+  constructor(private c: ConfigService) {
     // @ts-ignore
     window.authService = this
 

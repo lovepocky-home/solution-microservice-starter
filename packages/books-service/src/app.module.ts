@@ -27,6 +27,7 @@ import { AuthnMiddleware } from './middlewares/authn.middleware';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
+    // NOTE: move authn to api-gateway
     consumer.apply(AuthnMiddleware)
       .forRoutes(
         'graphql',
