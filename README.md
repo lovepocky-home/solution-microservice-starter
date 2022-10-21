@@ -83,6 +83,23 @@ graph TD
 - [ ] RPC
 - [ ] 分布式事务
 
+## Contact Me
+
+Mail: pockynwaffle@gmail.com
+
+## Thanks to
+
+- deployment
+  - https://github.com/kubernetes/
+  - https://github.com/helm/helm
+  - https://github.com/k3s-io/k3s/
+- infrastructure
+  - https://github.com/logto-io/logto
+  - https://github.com/apache/apisix
+- app
+  - https://github.com/angular/angular
+  - https://github.com/nestjs
+
 ## References
 
 - <https://stackoverflow.com/questions/38071714/when-and-how-to-use-graphql-with-microservice-architecture>

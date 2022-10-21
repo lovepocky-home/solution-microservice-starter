@@ -8,8 +8,8 @@ routes:
       cors: {}
       openid-connect:
         # https://github.com/apache/apisix/issues/5425
-        client_id: AIONBgkMNra8acZnzpDEp
-        client_secret: ng3niteUBC1LXVaPgHkQt
+        client_id: none
+        client_secret: none
         discovery: https://logto.pocki.cc/oidc/.well-known/openid-configuration
         use_jwks: true
         bearer_only: true
