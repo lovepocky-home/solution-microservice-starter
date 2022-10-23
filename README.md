@@ -107,3 +107,4 @@ Mail: pockynwaffle@gmail.com
 ## References
 
 - <https://stackoverflow.com/questions/38071714/when-and-how-to-use-graphql-with-microservice-architecture>
+- https://xuorig.medium.com/why-we-dont-see-many-public-graphql-apis-ad972bcb201e

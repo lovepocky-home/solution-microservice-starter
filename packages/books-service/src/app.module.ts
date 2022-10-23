@@ -8,6 +8,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BooksModule } from './business/books/books.module';
 import { Book } from './business/books/entities/book.entity';
+import { CommentModule } from './business/comment/comment.module';
+import { Comment } from './business/comment/entities/comment.entity';
 import { AuthnMiddleware } from './middlewares/authn.middleware';
 
 @Module({
@@ -24,7 +26,7 @@ import { AuthnMiddleware } from './middlewares/authn.middleware';
         return {
           type: 'postgres',
           url,
-          entities: [Book],
+          entities: [Book, Comment],
           synchronize: true,
         }
       }
@@ -37,6 +39,7 @@ import { AuthnMiddleware } from './middlewares/authn.middleware';
       useGlobalPrefix: true,
     }),
     BooksModule,
+    CommentModule,
   ],
   controllers: [AppController],
   providers: [AppService],

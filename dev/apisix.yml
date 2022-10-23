@@ -1,5 +1,13 @@
 routes:
   - uri: /api/*
+    methods: ["GET", "OPTIONS"]
+    upstream:
+      nodes:
+        "127.0.0.1:14202": 1
+      type: roundrobin
+    plugins:
+      cors: {}
+  - uri: /api/*
     upstream:
       nodes:
         "127.0.0.1:14202": 1
