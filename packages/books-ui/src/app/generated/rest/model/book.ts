@@ -12,8 +12,8 @@
 
 export interface Book { 
     id: string;
-    name: string;
-    ISBN: string;
     createdAt: Date;
     updatedAt: Date;
+    name: string;
+    ISBN: string;
 }

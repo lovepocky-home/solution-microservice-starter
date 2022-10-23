@@ -12,9 +12,9 @@
 
 export interface Comment { 
     id: string;
+    createdAt: Date;
+    updatedAt: Date;
     bookId: string;
     content: string;
     byUserId: string;
-    createdAt: Date;
-    updatedAt: Date;
 }

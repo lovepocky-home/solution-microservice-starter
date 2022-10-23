@@ -215,12 +215,6 @@
           "id": {
             "type": "string"
           },
-          "name": {
-            "type": "string"
-          },
-          "ISBN": {
-            "type": "string"
-          },
           "createdAt": {
             "format": "date-time",
             "type": "string"
@@ -228,14 +222,20 @@
           "updatedAt": {
             "format": "date-time",
             "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "ISBN": {
+            "type": "string"
           }
         },
         "required": [
           "id",
-          "name",
-          "ISBN",
           "createdAt",
-          "updatedAt"
+          "updatedAt",
+          "name",
+          "ISBN"
         ]
       },
       "CreateCommentDto": {
@@ -263,6 +263,14 @@
           "id": {
             "type": "string"
           },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
           "bookId": {
             "type": "string"
           },
@@ -271,23 +279,15 @@
           },
           "byUserId": {
             "type": "string"
-          },
-          "createdAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "updatedAt": {
-            "format": "date-time",
-            "type": "string"
           }
         },
         "required": [
           "id",
+          "createdAt",
+          "updatedAt",
           "bookId",
           "content",
-          "byUserId",
-          "createdAt",
-          "updatedAt"
+          "byUserId"
         ]
       },
       "UpdateCommentDto": {

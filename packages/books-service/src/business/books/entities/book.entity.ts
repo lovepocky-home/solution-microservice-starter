@@ -1,18 +1,11 @@
-import { Field, GraphQLISODateTime, ObjectType } from '@nestjs/graphql';
+import { Field, ObjectType } from '@nestjs/graphql';
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { Column, Entity } from "typeorm";
+import { BaseEntity } from '../../../common/base.entity';
 
 @Entity()
 @ObjectType()
-export class Book {
-
-  // db
-  @PrimaryColumn({ default: () => 'gen_random_uuid()' })
-  // graphql
-  @Field(() => String, { description: 'record id' })
-  // openapi
-  @ApiProperty()
-  id: string
+export class Book extends BaseEntity {
 
   @Column()
   @Field(() => String, { description: 'book name' })
@@ -23,15 +16,5 @@ export class Book {
   @Field(() => String, { nullable: true })
   @ApiProperty()
   ISBN?: string;
-
-  @CreateDateColumn()
-  @Field(() => GraphQLISODateTime)
-  @ApiProperty()
-  createdAt: Date;
-
-  @UpdateDateColumn()
-  @Field(() => GraphQLISODateTime)
-  @ApiProperty()
-  updatedAt: Date;
 
 }

@@ -15,13 +15,8 @@ export class CommentService {
   }
 
   async findPage(bookId: string) {
-    const query = { where: { bookId } }
-    return {
-      data: await this.bookRepo.find(query),
-      pageInfo: {
-        total: await this.bookRepo.count(query)
-      }
-    }
+    const [data, total] = await this.bookRepo.findAndCount({ where: { bookId } })
+    return { data, pageInfo: { total } }
   }
 
   findAllByBook(bookId: string) {

@@ -23,12 +23,8 @@ export class BooksService {
   }
 
   async findPage() {
-    return {
-      data: await this.bookRepo.find(),
-      pageInfo: {
-        total: await this.bookRepo.count()
-      }
-    }
+    const [data, total] = await this.bookRepo.findAndCount()
+    return { data, pageInfo: { total } }
   }
 
   findOne(id: string) {

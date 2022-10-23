@@ -1,15 +1,9 @@
-import { Field, GraphQLISODateTime } from '@nestjs/graphql';
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { Column, Entity } from "typeorm";
+import { BaseEntity } from '../../../common/base.entity';
 
 @Entity()
-export class Comment {
-
-  // db
-  @PrimaryColumn({ default: () => 'gen_random_uuid()' })
-  // openapi
-  @ApiProperty()
-  id: string
+export class Comment extends BaseEntity {
 
   @Column()
   @ApiProperty()
@@ -23,13 +17,4 @@ export class Comment {
   @ApiProperty()
   byUserId: string
 
-  @CreateDateColumn()
-  @Field(() => GraphQLISODateTime)
-  @ApiProperty()
-  createdAt: Date;
-
-  @UpdateDateColumn()
-  @Field(() => GraphQLISODateTime)
-  @ApiProperty()
-  updatedAt: Date;
 }
