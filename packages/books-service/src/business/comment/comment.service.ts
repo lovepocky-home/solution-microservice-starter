@@ -14,6 +14,16 @@ export class CommentService {
     return this.bookRepo.save(createCommentDto)
   }
 
+  async findPage(bookId: string) {
+    const query = { where: { bookId } }
+    return {
+      data: await this.bookRepo.find(query),
+      pageInfo: {
+        total: await this.bookRepo.count(query)
+      }
+    }
+  }
+
   findAllByBook(bookId: string) {
     return this.bookRepo.find({ where: { bookId } })
   }

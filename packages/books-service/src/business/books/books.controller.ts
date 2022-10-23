@@ -19,6 +19,6 @@ export class BooksController {
   @Get('/')
   @ApiResponse({ type: Book, isArray: true })
   async getList() {
-    return this.svc.findAll()
+    return this.svc.findPage()
   }
 }

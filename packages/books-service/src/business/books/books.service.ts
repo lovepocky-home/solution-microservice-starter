@@ -22,6 +22,15 @@ export class BooksService {
     return this.bookRepo.find()
   }
 
+  async findPage() {
+    return {
+      data: await this.bookRepo.find(),
+      pageInfo: {
+        total: await this.bookRepo.count()
+      }
+    }
+  }
+
   findOne(id: string) {
     this.logger.debug(`find book by id ${id}`)
     return this.bookRepo.findOne({ where: { id } })

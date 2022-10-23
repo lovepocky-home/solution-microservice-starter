@@ -16,7 +16,7 @@ export class CommentController {
 
   @Get()
   findAll(@Query('bookId') bookId: string) {
-    return this.commentService.findAllByBook(bookId);
+    return this.commentService.findPage(bookId);
   }
 
   @Get(':id')
