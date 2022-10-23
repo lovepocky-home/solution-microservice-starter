@@ -233,11 +233,36 @@
       },
       "CreateCommentDto": {
         "type": "object",
-        "properties": {}
+        "properties": {
+          "bookId": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "byUserId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "bookId",
+          "content",
+          "byUserId"
+        ]
       },
       "UpdateCommentDto": {
         "type": "object",
-        "properties": {}
+        "properties": {
+          "bookId": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "byUserId": {
+            "type": "string"
+          }
+        }
       }
     }
   }
