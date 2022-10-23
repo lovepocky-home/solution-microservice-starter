@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BooksService, CommentService } from '../generated/rest';
+import { BookService, CommentService } from '../generated/rest';
 import { AuthService } from './auth.service';
 import { ConfigService } from './config.service';
 
@@ -14,8 +14,8 @@ export class BackendService {
   h = this.c.config.backendHost
 
   constructor(private c: ConfigService, private http: HttpClient, private auth: AuthService,
-    private booksSvc: BooksService,
-    private commentsSvc: CommentService,
+    private bookSvc: BookService,
+    private commentSvc: CommentService,
   ) {
     // @ts-ignore
     window.backend = this
@@ -27,8 +27,7 @@ export class BackendService {
       case 'graphql':
         return
       case 'rest':
-        return this.booksSvc.booksControllerGetList().toPromise()
-      // return this.http.get(`${this.h}/api/v1/books`).toPromise()
+        return this.bookSvc.booksControllerGetList().toPromise()
     }
   }
 
@@ -37,8 +36,7 @@ export class BackendService {
       case 'graphql':
         return
       case 'rest':
-        return this.commentsSvc.commentControllerFindAll(bookId).toPromise()
-      // return this.http.get(`${this.h}/api/v1/comment`, { params: { bookId } }).toPromise()
+        return this.commentSvc.commentControllerFindAll(bookId).toPromise()
     }
   }
 
@@ -49,8 +47,7 @@ export class BackendService {
       case 'graphql':
         return
       case 'rest':
-        return this.commentsSvc.commentControllerCreate({ bookId, content, byUserId }).toPromise()
-      // return this.http.post(`${this.h}/api/v1/comment`, { bookId, content, byUser }).toPromise()
+        return this.commentSvc.commentControllerCreate({ bookId, content, byUserId }).toPromise()
     }
   }
 

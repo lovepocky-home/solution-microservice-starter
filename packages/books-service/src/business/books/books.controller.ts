@@ -3,8 +3,8 @@ import { ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { BooksService } from './books.service';
 import { Book } from './entities/book.entity';
 
-@ApiTags('books')
-@Controller('v1/books')
+@ApiTags('book')
+@Controller('v1/book')
 export class BooksController {
 
   constructor(private svc: BooksService) { }

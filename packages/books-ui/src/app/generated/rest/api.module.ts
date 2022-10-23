@@ -3,7 +3,7 @@ import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
 
-import { BooksService } from './api/books.service';
+import { BookService } from './api/book.service';
 import { CommentService } from './api/comment.service';
 import { DefaultService } from './api/default.service';
 
@@ -12,7 +12,7 @@ import { DefaultService } from './api/default.service';
   declarations: [],
   exports:      [],
   providers: [
-    BooksService,
+    BookService,
     CommentService,
     DefaultService ]
 })

@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "books:svc:dev": "pnpm run --filter books-service start:dev --preserveWatchOutput",
     "books:ui:dev": "pnpm run --filter books-ui start --host 0.0.0.0 --port 14200",
-    "books:ui:gen:swagger": "sudo -E docker run --rm -it -w /app -v ${PWD}:/app swaggerapi/swagger-codegen-cli-v3 generate -l typescript-angular -i ./packages/books-service/src/schema.swagger.json -o ./packages/books-ui/src/app/generated/rest",
+    "books:ui:gen:swagger": "sudo -E docker run --rm -w /app -v ${PWD}:/app swaggerapi/swagger-codegen-cli-v3 generate -l typescript-angular -i ./packages/books-service/src/schema.swagger.json -o ./packages/books-ui/src/app/generated/rest",
+    "books:ui:gen:swagger:watch": "nodemon -w ./packages/books-service/src/schema.swagger.json --exec 'sudo -E docker run --rm -w /app -v ${PWD}:/app swaggerapi/swagger-codegen-cli-v3 generate -l typescript-angular -i ./packages/books-service/src/schema.swagger.json -o ./packages/books-ui/src/app/generated/rest'",
     "gateway:dev": "pnpm run --filter gateway dev --port 14000",
     "dev": "concurrently --restart-after 5000 --restart-tries 3 'npm:books:dev' 'npm:gateway:dev' ",
     "tag": "echo $(git describe)$([[ ! -z $(git status -s) ]] && echo -$(date +'%s'))",
@@ -27,5 +28,8 @@
   "dependencies": {
     "@nestjs/cli": "^8.2.8",
     "concurrently": "^7.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
