@@ -1,6 +1,6 @@
 import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { from, lastValueFrom } from 'rxjs';
+import { from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,7 @@ export class ConfigService {
   config: {
     configName: string
     host: string
+    backendHost: string
     logto: {
       endpoint: string,
       appId: string,

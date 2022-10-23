@@ -5,6 +5,7 @@ config = {
 
   // main host
   host: "http://localhost:14200",
+  backendHost: "http://localhost:14201",
 
   // log
   logto: {
