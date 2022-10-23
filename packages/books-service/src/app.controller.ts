@@ -13,9 +13,4 @@ export class AppController {
     return { hello: this.appService.getHello() };
   }
 
-  @Get('/callback')
-  callback() {
-    this.logger.debug(`callback`)
-    return { callback: 1 }
-  }
 }

@@ -1,6 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { randomUUID } from 'crypto';
 import { Repository } from 'typeorm';
 import { CreateBookInput } from './dto/create-book.input';
 import { UpdateBookInput } from './dto/update-book.input';
@@ -8,6 +7,8 @@ import { Book } from './entities/book.entity';
 
 @Injectable()
 export class BooksService {
+
+  private logger = new Logger(BooksService.name)
 
   constructor(@InjectRepository(Book) private bookRepo: Repository<Book>,) {
 
@@ -22,8 +23,8 @@ export class BooksService {
   }
 
   findOne(id: string) {
+    this.logger.debug(`find book by id ${id}`)
     return this.bookRepo.findOne({ where: { id } })
-    // return `This action returns a #${id} book`;
   }
 
   update(id: number, updateBookInput: UpdateBookInput) {
