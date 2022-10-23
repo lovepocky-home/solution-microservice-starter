@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import LogtoClient, { UserInfoResponse } from '@logto/browser';
-import { environment } from '../../environments/environment';
 import { ConfigService } from './config.service';
 
 
@@ -26,7 +25,7 @@ export class AuthService {
     this.updateUserInfo()
 
     this.host = c.config.host
-    console.log(AuthService.name, this.host)
+    console.log('AuthService', this.host)
   }
 
   async updateUserInfo() {

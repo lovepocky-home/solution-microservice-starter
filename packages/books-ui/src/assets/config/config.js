@@ -12,6 +12,7 @@ config = {
     appId: 'AIONBgkMNra8acZnzpDEp',
     resources: [
       'http://localhost:14201/api/graphql',
+      'http://localhost:14201/api/v1',
       'https://api.logto.io',
     ]
   }

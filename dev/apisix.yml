@@ -1,5 +1,5 @@
 routes:
-  - uri: /api/graphql
+  - uri: /api/*
     upstream:
       nodes:
         "127.0.0.1:14202": 1

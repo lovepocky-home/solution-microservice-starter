@@ -1,11 +1,8 @@
-import { Injectable } from '@angular/core';
 import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor
+  HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 } from '@angular/common/http';
-import { Observable, of, from, lastValueFrom } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { from, lastValueFrom, Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
 @Injectable()
@@ -18,9 +15,11 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   async handle(request: HttpRequest<unknown>, next: HttpHandler) {
-    if (this.svc.resources.includes(request.url) && await this.svc.logtoClient.isAuthenticated()) {
-      console.log('url', request.url);
-      const token = await this.svc.logtoClient.getAccessToken(request.url)
+    let isResources = this.svc.resources.find(r => request.url.includes(r))
+
+    if (!!isResources && await this.svc.logtoClient.isAuthenticated()) {
+      console.log('url', request.url, isResources);
+      const token = await this.svc.logtoClient.getAccessToken(isResources)
       return await lastValueFrom(next.handle(request.clone({
         setHeaders: {
           'Authorization': 'Bearer ' + token
