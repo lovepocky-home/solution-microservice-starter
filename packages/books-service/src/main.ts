@@ -19,7 +19,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/v1', app, document);
 
-  {
+  if (existsSync('./src')) {
     // save swagger json to disk: https://github.com/nestjs/swagger/issues/158
     // also can be visited by api/v1-json
     const out = JSON.stringify(document, null, 2)
