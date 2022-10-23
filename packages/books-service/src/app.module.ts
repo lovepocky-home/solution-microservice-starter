@@ -24,7 +24,6 @@ import { AuthnMiddleware } from './middlewares/authn.middleware';
         return {
           type: 'postgres',
           url,
-          database: 'books',
           entities: [Book],
           synchronize: true,
         }
