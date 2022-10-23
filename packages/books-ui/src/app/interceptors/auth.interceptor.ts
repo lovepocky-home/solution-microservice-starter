@@ -8,7 +8,12 @@ import { AuthService } from '../services/auth.service';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private svc: AuthService) { }
+  apiServer: 'node' | 'py' | 'java' = 'node'
+
+  constructor(private svc: AuthService) {
+    // @ts-ignore
+    window.authInterceptor = this
+  }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return from(this.handle(request, next))
@@ -22,11 +27,16 @@ export class AuthInterceptor implements HttpInterceptor {
       const token = await this.svc.logtoClient.getAccessToken(isResources)
       return await lastValueFrom(next.handle(request.clone({
         setHeaders: {
-          'Authorization': 'Bearer ' + token
+          'Authorization': 'Bearer ' + token,
+          'api-server': this.apiServer,
         }
       })))
     } else {
-      return await lastValueFrom(next.handle(request))
+      return await lastValueFrom(next.handle(request.clone({
+        setHeaders: {
+          'api-server': this.apiServer,
+        }
+      })))
     }
   }
 }

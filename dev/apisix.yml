@@ -4,6 +4,7 @@ routes:
       nodes:
         "127.0.0.1:14202": 1
       type: roundrobin
+    # vars: [["http_api_server", "IN", ["node"]]]
     plugins:
       cors: {}
       openid-connect:
@@ -15,6 +16,17 @@ routes:
         bearer_only: true
         access_token_in_authorization_header: true
         set_userinfo_header: true
+      traffic-split:
+        rules:
+          - match:
+              - vars: [["http_api_server", "==", "py"]]
+            weighted_upstreams:
+              - upstream:
+                  name: py
+                  nodes:
+                    "127.0.0.1:14203": 1
+                  type: roundrobin
+
   - uri: /api
     upstream:
       nodes:
