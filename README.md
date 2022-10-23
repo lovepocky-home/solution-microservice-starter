@@ -7,7 +7,7 @@
 
 ## 技术选型
 
-- [ ] `[sso]` casdoor
+- [ ] `[sso]`
 - [ ] `[apigateway]` apisix
 
 ## targets
@@ -79,7 +79,10 @@ graph TD
 
 ## road map
 
-- [ ] sso, auth
+- [x] sso, auth
+  - [x] public/internal access
+  - [ ] update account: username/password, user-info
+- [ ] polyglot backend
 - [ ] RPC
 - [ ] 分布式事务
 

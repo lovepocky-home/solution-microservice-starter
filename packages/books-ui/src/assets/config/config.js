@@ -11,7 +11,8 @@ config = {
     endpoint: 'https://logto.pocki.cc',
     appId: 'AIONBgkMNra8acZnzpDEp',
     resources: [
-      'http://localhost:14201/api/graphql'
+      'http://localhost:14201/api/graphql',
+      'https://api.logto.io',
     ]
   }
 }
