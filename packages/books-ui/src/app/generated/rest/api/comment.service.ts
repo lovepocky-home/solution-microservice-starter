@@ -17,6 +17,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
+import { Comment } from '../model/comment';
 import { CreateCommentDto } from '../model/createCommentDto';
 import { UpdateCommentDto } from '../model/updateCommentDto';
 
@@ -109,9 +110,9 @@ export class CommentService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public commentControllerFindAll(bookId: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public commentControllerFindAll(bookId: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public commentControllerFindAll(bookId: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public commentControllerFindAll(bookId: string, observe?: 'body', reportProgress?: boolean): Observable<Comment>;
+    public commentControllerFindAll(bookId: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Comment>>;
+    public commentControllerFindAll(bookId: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Comment>>;
     public commentControllerFindAll(bookId: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (bookId === null || bookId === undefined) {
@@ -127,6 +128,7 @@ export class CommentService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -137,7 +139,7 @@ export class CommentService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/api/v1/comment`,
+        return this.httpClient.request<Comment>('get',`${this.basePath}/api/v1/comment`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

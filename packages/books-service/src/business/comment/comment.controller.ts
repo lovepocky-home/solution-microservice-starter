@@ -1,8 +1,9 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CommentService } from './comment.service';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { UpdateCommentDto } from './dto/update-comment.dto';
+import { Comment } from './entities/comment.entity';
 
 @ApiTags('comment')
 @Controller('v1/comment')
@@ -14,6 +15,7 @@ export class CommentController {
     return this.commentService.create(createCommentDto);
   }
 
+  @ApiResponse({ type: Comment })
   @Get()
   findAll(@Query('bookId') bookId: string) {
     return this.commentService.findPage(bookId);

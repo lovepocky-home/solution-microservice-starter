@@ -102,8 +102,15 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": ""
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Comment"
+                }
+              }
+            }
           }
         },
         "tags": [
@@ -248,6 +255,39 @@
           "bookId",
           "content",
           "byUserId"
+        ]
+      },
+      "Comment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "bookId": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "byUserId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "bookId",
+          "content",
+          "byUserId",
+          "createdAt",
+          "updatedAt"
         ]
       },
       "UpdateCommentDto": {
