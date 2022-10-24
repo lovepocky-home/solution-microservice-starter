@@ -9,7 +9,9 @@ WORKDIR /app
 
 COPY pnpm-lock.yaml ./
 
-RUN pnpm fetch --prod
+RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm \
+  --mount=type=cache,id=pnpm2,target=/.pnpm-store \
+  pnpm fetch --prod
 
 COPY .npmrc .
 COPY packages/books-service/package.json packages/books-service/package.json
