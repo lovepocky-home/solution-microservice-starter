@@ -1,5 +1,6 @@
 import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { KeycloakConfig } from 'keycloak-js';
 import { from } from 'rxjs';
 
 @Injectable({
@@ -18,6 +19,7 @@ export class ConfigService {
       appId: string,
       resources: string[]
     }
+    keycloak: KeycloakConfig
   } = {} as any
 
   constructor(handler: HttpBackend) {

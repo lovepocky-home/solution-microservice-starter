@@ -4,7 +4,7 @@
       "path": "."
     },
     {
-      "path": "./packages/gateway"
+      "path": "./dev"
     },
     {
       "path": "./packages/books-service"

@@ -16,14 +16,22 @@ routes:
     plugins:
       cors: {}
       openid-connect:
-        # https://github.com/apache/apisix/issues/5425
-        client_id: none
+        # https://apisix.apache.org/zh/blog/2021/12/10/integrate-keycloak-auth-in-apisix/
+        realm: showcase
+        # introspection_endpoint: https://keycloak.pocki.cc/realms/showcase/protocol/openid-connect/token/introspect
+        client_id: books-ui
         client_secret: none
-        discovery: https://logto.pocki.cc/oidc/.well-known/openid-configuration
+        discovery: https://keycloak.pocki.cc/realms/showcase/.well-known/openid-configuration
         use_jwks: true
         bearer_only: true
-        access_token_in_authorization_header: true
-        set_userinfo_header: true
+
+      # openid-connect:
+      #   # https://github.com/apache/apisix/issues/5425
+      #   client_id: none
+      #   client_secret: none
+      #   discovery: https://logto.pocki.cc/oidc/.well-known/openid-configuration
+      #   use_jwks: true
+      #   bearer_only: true
       traffic-split:
         rules:
           - match:

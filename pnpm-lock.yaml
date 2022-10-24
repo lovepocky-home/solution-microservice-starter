@@ -114,6 +114,7 @@ importers:
       karma-coverage: ~2.1.0
       karma-jasmine: ~4.0.0
       karma-jasmine-html-reporter: ~1.7.0
+      keycloak-js: ^19.0.3
       rxjs: ~7.5.0
       tslib: ^2.3.0
       typescript: ~4.6.2
@@ -128,6 +129,7 @@ importers:
       '@angular/platform-browser-dynamic': 13.3.11_ovunbf5pfqpgs344qovmyresle
       '@angular/router': 13.3.11_k5i434uah3ayhhpzgo76tjk2ai
       '@logto/browser': 1.0.0-beta.8
+      keycloak-js: 19.0.3
       rxjs: 7.5.5
       tslib: 2.4.0
       zone.js: 0.11.8
@@ -10597,6 +10599,10 @@ packages:
     resolution: {integrity: sha512-NnRs6dsyqUXejqk/yv2aiXlAvOs56sLkX6nUdeaNezI5LFFLlsZjOThmwnrcwh5ZZRwZlCMnVAY3CvhIhoVEKQ==}
     dev: false
 
+  /js-sha256/0.9.0:
+    resolution: {integrity: sha512-sga3MHh9sgQN2+pJ9VYZ+1LPwXOxuBJBA5nrR5/ofPfuiJBE2hnjsaN8se8JznOmGLN2p49Pe5U/ttafcs/apA==}
+    dev: false
+
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
@@ -10802,6 +10808,13 @@ packages:
       - supports-color
       - utf-8-validate
     dev: true
+
+  /keycloak-js/19.0.3:
+    resolution: {integrity: sha512-mzCBxrzfl+vB551Q7MB+T9+40IHU4i0a6g1eTatzeEGrQMis5m/BqvPC3kxTsI+/LxHbB9XYQE3u9SlWKDHQCw==}
+    dependencies:
+      base64-js: 1.5.1
+      js-sha256: 0.9.0
+    dev: false
 
   /kind-of/3.2.2:
     resolution: {integrity: sha512-NOW9QQXMoZGg/oqnVNoNTTIFEIid1627WCffUBJEdMxYApq7mNE7CpzucIPc+ZQg25Phej7IJSmX3hO+oblOtQ==}

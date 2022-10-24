@@ -1,8 +1,8 @@
 import { Injectable, Logger, NestMiddleware, UnauthorizedException } from '@nestjs/common';
-import { Request, Response, NextFunction } from 'express';
-import { createRemoteJWKSet, jwtVerify } from 'jose';
-import { IncomingHttpHeaders } from 'http';
 import { ConfigService } from '@nestjs/config';
+import { NextFunction, Request, Response } from 'express';
+import { IncomingHttpHeaders } from 'http';
+import { createRemoteJWKSet, jwtVerify } from 'jose';
 
 const bearerTokenIdentifier = 'Bearer'
 
@@ -52,7 +52,7 @@ export class AuthnMiddleware implements NestMiddleware {
       const userInfo = JSON.parse(Buffer.from(req.headers['x-userinfo'].toString(), 'base64').toString('utf-8'))
       const { sub: userId } = userInfo
       // if (debug) logger.debug(userInfo)
-      if (debug) logger.debug(`${req.method} ${req.baseUrl} from ${userId}`)
+      if (debug) logger.debug(`${req.method} ${req.originalUrl} from ${userId}`)
     }
 
     if (!this.enable) {

@@ -50,6 +50,7 @@ export class AppModule implements NestModule {
     consumer.apply(AuthnMiddleware)
       .forRoutes(
         'graphql',
+        'v1',
       )
   }
 }

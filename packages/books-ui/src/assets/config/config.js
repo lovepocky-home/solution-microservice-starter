@@ -16,5 +16,12 @@ config = {
       'http://localhost:14201/api/v1',
       'https://api.logto.io',
     ]
+  },
+
+  // keycloak
+  keycloak: {
+    realm: "showcase",
+    clientId: "books-ui",
+    url: "https://keycloak.pocki.cc/"
   }
 }
