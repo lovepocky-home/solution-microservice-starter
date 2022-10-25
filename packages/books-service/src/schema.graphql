@@ -6,6 +6,7 @@ type Book {
   """book name"""
   name: String!
   ISBN: String
+  img: String
 }
 
 type Query {

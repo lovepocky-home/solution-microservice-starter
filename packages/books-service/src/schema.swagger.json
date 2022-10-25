@@ -228,6 +228,9 @@
           },
           "ISBN": {
             "type": "string"
+          },
+          "img": {
+            "type": "string"
           }
         },
         "required": [
@@ -235,7 +238,8 @@
           "createdAt",
           "updatedAt",
           "name",
-          "ISBN"
+          "ISBN",
+          "img"
         ]
       },
       "CreateCommentDto": {

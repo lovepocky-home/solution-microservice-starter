@@ -17,4 +17,8 @@ export class Book extends BaseEntity {
   @ApiProperty()
   ISBN?: string;
 
+  @Column({ nullable: true })
+  @Field(() => String, { nullable: true })
+  @ApiProperty()
+  img?: string;
 }

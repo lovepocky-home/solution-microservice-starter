@@ -16,4 +16,5 @@ export interface Book {
     updatedAt: Date;
     name: string;
     ISBN: string;
+    img: string;
 }

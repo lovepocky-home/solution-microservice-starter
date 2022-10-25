@@ -28,6 +28,8 @@ import { AuthnMiddleware } from './middlewares/authn.middleware';
           url,
           entities: [Book, Comment],
           synchronize: true,
+          logging: ['schema'],
+          logger: 'advanced-console',
         }
       }
     }),

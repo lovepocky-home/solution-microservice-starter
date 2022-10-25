@@ -13,4 +13,13 @@ export class UserInfoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  login() {
+    console.log('login');
+    this.auth.signIn()
+  }
+  logout() {
+    console.log('logout');
+    this.auth.signOut()
+  }
+
 }

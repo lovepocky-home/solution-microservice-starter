@@ -11,17 +11,7 @@ import { BackendService } from './services/backend.service';
 export class AppComponent {
   title = 'books-ui';
 
-  constructor(public authService: AuthService, private http: HttpClient, private backend: BackendService) {
-    // @ts-ignore
-    window.http = http
+  constructor(private http: HttpClient, private backend: BackendService) {
   }
 
-  login() {
-    console.log('login');
-    this.authService.signIn()
-  }
-  logout() {
-    console.log('logout');
-    this.authService.signOut()
-  }
 }
