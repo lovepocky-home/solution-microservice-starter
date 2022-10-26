@@ -18,6 +18,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 import { Book } from '../model/book';
+import { P } from '../model/p';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -102,9 +103,9 @@ export class BookService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public booksControllerGetList(observe?: 'body', reportProgress?: boolean): Observable<Array<Book>>;
-    public booksControllerGetList(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Book>>>;
-    public booksControllerGetList(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Book>>>;
+    public booksControllerGetList(observe?: 'body', reportProgress?: boolean): Observable<P>;
+    public booksControllerGetList(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<P>>;
+    public booksControllerGetList(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<P>>;
     public booksControllerGetList(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -122,7 +123,7 @@ export class BookService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Book>>('get',`${this.basePath}/api/v1/book`,
+        return this.httpClient.request<P>('get',`${this.basePath}/api/v1/book`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

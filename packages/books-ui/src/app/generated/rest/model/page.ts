@@ -10,12 +10,7 @@
  * Do not edit the class manually.
  */
 
-export interface Book { 
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    name: string;
-    ISBN: string;
-    img: string;
-    description: string;
+export interface Page { 
+    data: Array<string>;
+    pageInfo: any;
 }

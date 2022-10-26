@@ -52,10 +52,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Book"
-                  }
+                  "$ref": "#/components/schemas/P"
                 }
               }
             }
@@ -231,6 +228,9 @@
           },
           "img": {
             "type": "string"
+          },
+          "description": {
+            "type": "string"
           }
         },
         "required": [
@@ -239,7 +239,37 @@
           "updatedAt",
           "name",
           "ISBN",
-          "img"
+          "img",
+          "description"
+        ]
+      },
+      "PageInfo": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "total"
+        ]
+      },
+      "P": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Book"
+            }
+          },
+          "pageInfo": {
+            "$ref": "#/components/schemas/PageInfo"
+          }
+        },
+        "required": [
+          "data",
+          "pageInfo"
         ]
       },
       "CreateCommentDto": {

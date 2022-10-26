@@ -1,12 +1,16 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BookListComponent } from './business/book-list/book-list.component';
 import { BookModule } from './business/book/book.module';
 import { CallbackComponent } from './callback/callback.component';
 import { ApiModule, BASE_PATH } from './generated/rest';
@@ -20,6 +24,7 @@ import { UserInfoComponent } from './user-info/user-info.component';
     AppComponent,
     CallbackComponent,
     UserInfoComponent,
+    BookListComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +36,9 @@ import { UserInfoComponent } from './user-info/user-info.component';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    MatToolbarModule,
+    MatListModule,
+    MatCardModule,
   ],
   providers: [
     ConfigService,

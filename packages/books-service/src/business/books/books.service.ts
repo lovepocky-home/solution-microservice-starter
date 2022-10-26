@@ -23,7 +23,7 @@ export class BooksService {
   }
 
   async findPage() {
-    const [data, total] = await this.bookRepo.findAndCount()
+    const [data, total] = await this.bookRepo.findAndCount({ order: { createdAt: -1 } })
     return { data, pageInfo: { total } }
   }
 

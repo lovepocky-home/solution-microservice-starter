@@ -1,5 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Paginated } from '../../common/page';
 import { BooksService } from './books.service';
 import { Book } from './entities/book.entity';
 
@@ -16,7 +17,7 @@ export class BooksController {
   }
 
   @Get('/')
-  @ApiResponse({ type: Book, isArray: true })
+  @ApiResponse({ type: Paginated(Book) })
   async getList() {
     return this.svc.findPage()
   }

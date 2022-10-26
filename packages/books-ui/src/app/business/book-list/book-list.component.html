@@ -1,0 +1,14 @@
+<mat-card class="book-card" *ngFor="let book of books | async">
+  <mat-card-title-group>
+    <mat-card-title>{{book.name}}</mat-card-title>
+    <mat-card-subtitle>{{book.ISBN}}</mat-card-subtitle>
+    <img mat-card-lg-image [src]="book.img">
+  </mat-card-title-group>
+  <mat-card-content>
+    {{book.description}}
+  </mat-card-content>
+  <button *ngIf="auth.logged" mat-icon-button [color]="true ? 'basic': 'warn'"
+    aria-label="Example icon button with a heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+</mat-card>
