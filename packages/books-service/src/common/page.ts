@@ -24,15 +24,3 @@ export function Paginated<T extends ClassType>(dataT: T) {
   }
   return P
 }
-
-// export class Page<T extends ClassType> {
-
-//   @ApiProperty({ type: T, isArray: true })
-//   data: T[]
-
-//   @ApiProperty()
-//   pageInfo: {
-//     total: number
-//   }
-
-// }

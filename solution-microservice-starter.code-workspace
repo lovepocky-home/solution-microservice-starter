@@ -22,9 +22,14 @@
         "remotePort": 14200
       },
       {
-        "name": "books-service",
+        "name": "apisix",
         "localPort": 14201,
         "remotePort": 14201
+      },
+      {
+        "name": "books-service",
+        "localPort": 14202,
+        "remotePort": 14202
       },
     ],
     "[typescript]": {
