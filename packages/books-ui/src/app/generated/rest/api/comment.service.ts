@@ -19,6 +19,7 @@ import { Observable }                                        from 'rxjs';
 
 import { Comment } from '../model/comment';
 import { CreateCommentDto } from '../model/createCommentDto';
+import { PaginatedComment } from '../model/paginatedComment';
 import { UpdateCommentDto } from '../model/updateCommentDto';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -201,10 +202,10 @@ export class CommentService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public commentControllerGetList(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public commentControllerGetList(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public commentControllerGetList(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public commentControllerGetList(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public commentControllerPage(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, observe?: 'body', reportProgress?: boolean): Observable<PaginatedComment>;
+    public commentControllerPage(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PaginatedComment>>;
+    public commentControllerPage(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PaginatedComment>>;
+    public commentControllerPage(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
 
@@ -232,6 +233,7 @@ export class CommentService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -242,7 +244,7 @@ export class CommentService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/api/v1/comment`,
+        return this.httpClient.request<PaginatedComment>('get',`${this.basePath}/api/v1/comment`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

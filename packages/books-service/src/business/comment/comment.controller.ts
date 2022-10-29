@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
-import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { PageQuery } from '../../common/page';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { PageQuery, PaginatedSchema } from '../../common/page';
 import { CommentService } from './comment.service';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { UpdateCommentDto } from './dto/update-comment.dto';
@@ -16,15 +16,15 @@ export class CommentController {
     return this.commentService.create(createCommentDto);
   }
 
-  @ApiResponse({ type: Comment })
   @Get('all')
+  @ApiOkResponse({ type: Comment })
   findAll(@Query('bookId') bookId: string) {
     return this.commentService.findPage(bookId);
   }
 
   @Get()
-  // @ApiResponse({ type: Paginated(Comment) })
-  async getList(@Query() q: PageQuery) {
+  @ApiOkResponse({ schema: PaginatedSchema(Comment) })
+  async page(@Query() q: PageQuery) {
     // return this.commentService.findPage();
     return []
   }

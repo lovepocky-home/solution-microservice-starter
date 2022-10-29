@@ -26,7 +26,7 @@
           }
         ],
         "responses": {
-          "default": {
+          "200": {
             "description": "",
             "content": {
               "application/json": {
@@ -168,7 +168,7 @@
         ]
       },
       "get": {
-        "operationId": "CommentController_getList",
+        "operationId": "CommentController_page",
         "parameters": [
           {
             "name": "keyword",
@@ -225,7 +225,33 @@
         ],
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "PaginatedComment",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Paged"
+                    },
+                    {
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Comment"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "required": [
+                    "data",
+                    "pageInfo"
+                  ]
+                }
+              }
+            }
           }
         },
         "tags": [
@@ -247,7 +273,7 @@
           }
         ],
         "responses": {
-          "default": {
+          "200": {
             "description": "",
             "content": {
               "application/json": {
