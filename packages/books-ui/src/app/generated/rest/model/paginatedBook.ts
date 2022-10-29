@@ -11,8 +11,8 @@
  */
 import { Book } from './book';
 import { PageInfo } from './pageInfo';
+import { Paged } from './paged';
 
-export interface Page { 
+export interface PaginatedBook extends Paged { 
     data: Array<Book>;
-    pageInfo: PageInfo;
 }

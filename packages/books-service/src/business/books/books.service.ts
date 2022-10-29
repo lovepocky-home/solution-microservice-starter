@@ -1,6 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { Paged } from '../../common/page';
 import { CreateBookInput } from './dto/create-book.input';
 import { UpdateBookInput } from './dto/update-book.input';
 import { Book } from './entities/book.entity';
@@ -22,7 +23,7 @@ export class BooksService {
     return this.bookRepo.find()
   }
 
-  async findPage() {
+  async findPage(): Promise<Paged<Book>> {
     const [data, total] = await this.bookRepo.findAndCount({ order: { createdAt: -1 } })
     return { data, pageInfo: { total } }
   }

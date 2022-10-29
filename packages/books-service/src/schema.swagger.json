@@ -109,12 +109,31 @@
           }
         ],
         "responses": {
-          "default": {
+          "200": {
             "description": "",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/P"
+                  "title": "PaginatedBook",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Paged"
+                    },
+                    {
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Book"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "required": [
+                    "data",
+                    "pageInfo"
+                  ]
                 }
               }
             }
@@ -148,6 +167,73 @@
           "comment"
         ]
       },
+      "get": {
+        "operationId": "CommentController_getList",
+        "parameters": [
+          {
+            "name": "keyword",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "nullable": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "nullable": true,
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "size",
+            "required": false,
+            "in": "query",
+            "description": "page size",
+            "schema": {
+              "nullable": true,
+              "default": 10,
+              "type": "number"
+            }
+          },
+          {
+            "name": "start",
+            "required": false,
+            "in": "query",
+            "description": "parse by new Date()",
+            "schema": {
+              "format": "date-time",
+              "nullable": true,
+              "type": "string"
+            }
+          },
+          {
+            "name": "end",
+            "required": false,
+            "in": "query",
+            "description": "parse by new Date()",
+            "schema": {
+              "format": "date-time",
+              "nullable": true,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "comment"
+        ]
+      }
+    },
+    "/api/v1/comment/all": {
       "get": {
         "operationId": "CommentController_findAll",
         "parameters": [
@@ -268,6 +354,28 @@
   "servers": [],
   "components": {
     "schemas": {
+      "PageInfo": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "total"
+        ]
+      },
+      "Paged": {
+        "type": "object",
+        "properties": {
+          "pageInfo": {
+            "$ref": "#/components/schemas/PageInfo"
+          }
+        },
+        "required": [
+          "pageInfo"
+        ]
+      },
       "Book": {
         "type": "object",
         "properties": {
@@ -303,35 +411,6 @@
           "ISBN",
           "img",
           "description"
-        ]
-      },
-      "PageInfo": {
-        "type": "object",
-        "properties": {
-          "total": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "total"
-        ]
-      },
-      "P": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Book"
-            }
-          },
-          "pageInfo": {
-            "$ref": "#/components/schemas/PageInfo"
-          }
-        },
-        "required": [
-          "data",
-          "pageInfo"
         ]
       },
       "CreateCommentDto": {

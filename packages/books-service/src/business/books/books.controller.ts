@@ -1,6 +1,6 @@
 import { Controller, Get, Logger, Param, Query } from '@nestjs/common';
-import { ApiProperty, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { PageQuery, Paginated } from '../../common/page';
+import { ApiExtraModels, ApiOkResponse, ApiProperty, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Paged, PageQuery, PaginatedSchema } from '../../common/page';
 import { BooksService } from './books.service';
 import { Book } from './entities/book.entity';
 
@@ -25,7 +25,8 @@ export class BooksController {
   }
 
   @Get('/')
-  @ApiResponse({ type: Paginated(Book) })
+  // @ApiOkResponse({ type: Paginated(Book) })
+  @ApiOkResponse({ schema: PaginatedSchema(Book) })
   async getList(@Query() q: BookListPageQuery) {
     this.logger.debug(`q ${JSON.stringify(q)}`)
     return this.svc.findPage()

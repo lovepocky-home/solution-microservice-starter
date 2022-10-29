@@ -18,7 +18,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 import { Book } from '../model/book';
-import { P } from '../model/p';
+import { PaginatedBook } from '../model/paginatedBook';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -109,9 +109,9 @@ export class BookService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public booksControllerGetList(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, ISBN?: string, observe?: 'body', reportProgress?: boolean): Observable<P>;
-    public booksControllerGetList(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, ISBN?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<P>>;
-    public booksControllerGetList(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, ISBN?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<P>>;
+    public booksControllerGetList(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, ISBN?: string, observe?: 'body', reportProgress?: boolean): Observable<PaginatedBook>;
+    public booksControllerGetList(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, ISBN?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PaginatedBook>>;
+    public booksControllerGetList(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, ISBN?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PaginatedBook>>;
     public booksControllerGetList(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, ISBN?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
@@ -155,7 +155,7 @@ export class BookService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<P>('get',`${this.basePath}/api/v1/book`,
+        return this.httpClient.request<PaginatedBook>('get',`${this.basePath}/api/v1/book`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

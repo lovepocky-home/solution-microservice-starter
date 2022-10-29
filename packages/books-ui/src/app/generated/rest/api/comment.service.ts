@@ -139,7 +139,7 @@ export class CommentService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Comment>('get',`${this.basePath}/api/v1/comment`,
+        return this.httpClient.request<Comment>('get',`${this.basePath}/api/v1/comment/all`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -182,6 +182,69 @@ export class CommentService {
 
         return this.httpClient.request<any>('get',`${this.basePath}/api/v1/comment/${encodeURIComponent(String(id))}`,
             {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param keyword 
+     * @param page 
+     * @param size page size
+     * @param start parse by new Date()
+     * @param end parse by new Date()
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public commentControllerGetList(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public commentControllerGetList(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public commentControllerGetList(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public commentControllerGetList(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+
+
+
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (keyword !== undefined && keyword !== null) {
+            queryParameters = queryParameters.set('keyword', <any>keyword);
+        }
+        if (page !== undefined && page !== null) {
+            queryParameters = queryParameters.set('page', <any>page);
+        }
+        if (size !== undefined && size !== null) {
+            queryParameters = queryParameters.set('size', <any>size);
+        }
+        if (start !== undefined && start !== null) {
+            queryParameters = queryParameters.set('start', <any>start.toISOString());
+        }
+        if (end !== undefined && end !== null) {
+            queryParameters = queryParameters.set('end', <any>end.toISOString());
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('get',`${this.basePath}/api/v1/comment`,
+            {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

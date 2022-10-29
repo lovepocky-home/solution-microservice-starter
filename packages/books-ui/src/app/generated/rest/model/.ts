@@ -9,10 +9,6 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Book } from './book';
-import { PageInfo } from './pageInfo';
 
-export interface Page { 
-    data: Array<Book>;
-    pageInfo: PageInfo;
+export interface  { 
 }
