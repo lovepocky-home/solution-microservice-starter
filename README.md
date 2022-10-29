@@ -1,70 +1,76 @@
+# Solution MicroService Starter
+
+- sample site
+  - https://books.pocki.cc `app`
+  - https://kubeview.pocki.cc `overall sight of services`
+  - helm repo is not public
+
+## TOC
+
 - [Solution MicroService Starter](#solution-microservice-starter)
-  - [why microservice?](#why-microservice)
-  - [structure](#structure)
-  - [targets](#targets)
-  - [support features](#support-features)
-  - [road map](#road-map)
+  - [TOC](#toc)
+  - [Structure](#structure)
+  - [Targets](#targets)
+  - [Support Features](#support-features)
+  - [Road map](#road-map)
   - [Contact Me](#contact-me)
   - [Thanks to](#thanks-to)
   - [References](#references)
 
-# Solution MicroService Starter
-
-## why microservice?
-
-- 兼容旧有系统
-- 协作开发
-
-## structure
+## Structure
 
 ```mermaid
 graph TD
   subgraph client
-    web
+    web(web::books-ui)
     other-client[others]
   end
 
   subgraph Cloud
-    apigateway
-    authentication-center
+    apigateway(ingress)
+    authentication-center(authentication-center::keycloak)
 
-    subgraph bff
-      bff-web
-      bff-others
+    subgraph public-access
+      bff-web(apigateway)
     end
+
+    bff-web -- check access token --> authentication-center
+
+    subgraph private-access
+      proxy(proxy/vpn/...)
+    end
+
+    proxy -.-> business-svc
+    proxy -.-> admin-console
 
     %% services
     subgraph services
-      graphql-mesh-api
-      sso
-      dashboard
-      admin-console
-      business-svc
-      task-svc
+      admin-console(admin-svc::not-implement)
+      business-svc(business::books-service)
+      task-svc(task-svc::not-implement)
     end
 
     subgraph basic
       DB[(DB)]
       MQ
+      
     end
   end
 
-  web -- authenticate by uri --> apigateway -- carry access token --> bff-web
-  apigateway -- issue access token -.- authentication-center
+  web -- route by url --> apigateway -- carry access token --> bff-web
+  apigateway -- get access token -.- authentication-center
 
-  bff-web --> sso
-  bff-others --> sso
-  bff-web .-> admin-console
+  bff-web
+  bff-web 
   bff-web .-> business-svc
 
-  sso --- DB
   admin-console --- DB
   business-svc --- DB
- 
+  authentication-center --- DB
 
 ```
 
-## targets
+## Targets
 
 - [ ] 关于代码/项目的可维护性, 扩张能力
   - 如果属于核心服务的代码, 需要能够做到自动化端到端测试, 只有达到这个标准才能有强说服力保证代码功能稳定
@@ -85,12 +91,12 @@ graph TD
   - [ ] distributed tracing
   - [ ] logging
 
-## support features
+## Support Features
 
 - frontend
 - backend
 
-## road map
+## Road map
 
 - [x] sso, auth
   - [x] public/internal access
