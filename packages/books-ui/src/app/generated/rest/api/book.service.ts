@@ -100,13 +100,45 @@ export class BookService {
     /**
      * 
      * 
+     * @param keyword 
+     * @param page 
+     * @param size page size
+     * @param start parse by new Date()
+     * @param end parse by new Date()
+     * @param ISBN 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public booksControllerGetList(observe?: 'body', reportProgress?: boolean): Observable<P>;
-    public booksControllerGetList(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<P>>;
-    public booksControllerGetList(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<P>>;
-    public booksControllerGetList(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public booksControllerGetList(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, ISBN?: string, observe?: 'body', reportProgress?: boolean): Observable<P>;
+    public booksControllerGetList(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, ISBN?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<P>>;
+    public booksControllerGetList(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, ISBN?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<P>>;
+    public booksControllerGetList(keyword?: string, page?: number, size?: number, start?: Date, end?: Date, ISBN?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+
+
+
+
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (keyword !== undefined && keyword !== null) {
+            queryParameters = queryParameters.set('keyword', <any>keyword);
+        }
+        if (page !== undefined && page !== null) {
+            queryParameters = queryParameters.set('page', <any>page);
+        }
+        if (size !== undefined && size !== null) {
+            queryParameters = queryParameters.set('size', <any>size);
+        }
+        if (start !== undefined && start !== null) {
+            queryParameters = queryParameters.set('start', <any>start.toISOString());
+        }
+        if (end !== undefined && end !== null) {
+            queryParameters = queryParameters.set('end', <any>end.toISOString());
+        }
+        if (ISBN !== undefined && ISBN !== null) {
+            queryParameters = queryParameters.set('ISBN', <any>ISBN);
+        }
 
         let headers = this.defaultHeaders;
 
@@ -125,6 +157,7 @@ export class BookService {
 
         return this.httpClient.request<P>('get',`${this.basePath}/api/v1/book`,
             {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
