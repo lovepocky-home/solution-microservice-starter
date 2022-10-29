@@ -1,3 +1,13 @@
+- [Solution MicroService Starter](#solution-microservice-starter)
+  - [why microservice?](#why-microservice)
+  - [structure](#structure)
+  - [targets](#targets)
+  - [support features](#support-features)
+  - [road map](#road-map)
+  - [Contact Me](#contact-me)
+  - [Thanks to](#thanks-to)
+  - [References](#references)
+
 # Solution MicroService Starter
 
 ## why microservice?
@@ -62,17 +72,18 @@ graph TD
 - [ ] 便于协作
   - 如果新加入一个服务, 那么如何保证新服务涉及旧服务的集成测试?
     - 所以需要有一个集成测试环境
-- [ ] static type
+- [x] static type
 - [ ] code gen
   - [x] rest-api(code-first): backend-code --> swagger/openapi schema/docs --> frontend client code
+  - [ ] graphql (nodejs)
 - [x] monorepo
-- [ ] local test friendly
+- [ ] config
+  - [ ] config transparent to code: config depends on environment
+- [ ] test
+  - [ ] local test friendly
 - [ ] monitor
   - [ ] distributed tracing
   - [ ] logging
-- [ ] graphql and rest
-- [ ] 接口文档swagger/playground, 附带鉴权(类似casdoor的文档, 登录之后才能使用, 同时也便于测试)
-- [ ] config transparent to code: config depends on environment
 
 ## support features
 
