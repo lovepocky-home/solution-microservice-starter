@@ -9,6 +9,7 @@
 
 - [Solution MicroService Starter](#solution-microservice-starter)
   - [TOC](#toc)
+  - [Introduction](#introduction)
   - [Structure](#structure)
   - [Targets](#targets)
   - [Support Features](#support-features)
@@ -16,6 +17,8 @@
   - [Contact Me](#contact-me)
   - [Thanks to](#thanks-to)
   - [References](#references)
+
+## Introduction
 
 ## Structure
 
@@ -72,29 +75,35 @@ graph TD
 
 ## Targets
 
-- [ ] 关于代码/项目的可维护性, 扩张能力
-  - 如果属于核心服务的代码, 需要能够做到自动化端到端测试, 只有达到这个标准才能有强说服力保证代码功能稳定
-  - 但是这个对于代码框架的要求是极高的
-- [ ] 便于协作
-  - 如果新加入一个服务, 那么如何保证新服务涉及旧服务的集成测试?
-    - 所以需要有一个集成测试环境
+- High Efficient
+  - Code Generation / Code First API
+- Easy to maintain, Easy to develop business features
+  - Unit Test and EndToEnd Test Coverage => Feature Correctness
+  - Automatic Test
+- Easy to Cooperate
+  - Monorepo
+  - Static Types
+  - Generated Codes
+  - Generated Docs
+- Easy for Operations and Monitoring
+  - service arranged by kubernetes
+  - environment specific configuration
+  - gitops: Operations managed by git
+
+## Support Features
+
+- [x] deploy by helm
 - [x] static type
 - [ ] code gen
   - [x] rest-api(code-first): backend-code --> swagger/openapi schema/docs --> frontend client code
   - [ ] graphql (nodejs)
 - [x] monorepo
-- [ ] config
-  - [ ] config transparent to code: config depends on environment
+- [x] configs are transparent to code: config depends on environment
 - [ ] test
   - [ ] local test friendly
 - [ ] monitor
   - [ ] distributed tracing
   - [ ] logging
-
-## Support Features
-
-- frontend
-- backend
 
 ## Road map
 
