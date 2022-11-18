@@ -119,6 +119,8 @@ graph TD
   - [x] public/internal access
   - [ ] update account: username/password, user-info
 - [ ] testing
+  - [ ] temporary service: database, etc..
+  - [ ] mock third-party service
 - [ ] log collect
 - [ ] polyglot backend
 - [ ] ? RPC
@@ -150,3 +152,4 @@ Looking for backend full/part-time jobs
 - <https://stackoverflow.com/questions/38071714/when-and-how-to-use-graphql-with-microservice-architecture>
 - https://xuorig.medium.com/why-we-dont-see-many-public-graphql-apis-ad972bcb201e
 - http://biercoff.com/my-small-investigation-about-swagger-codegen-generation-in-typescript/
+- https://evgeniy-khyst.com/podman-testcontainers/ `testing`
