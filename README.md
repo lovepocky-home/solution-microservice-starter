@@ -11,7 +11,7 @@ Online Sample Site:
     <img src="./docs/img/sample-books-ui.png" alt="drawing" width="200"/>
   - you can login in with oauth accounts like google/github
 - https://kubeview.pocki.cc `overall sight of services`  
-    <img src="./docs/img/sample-kubeview.png" alt="drawing" width="400"/>
+    <img src="./docs/img/sample-kubeview.png" alt="drawing" width="600"/>
 - helm repo is not public, containing environment specific configs
 
 ## TOC
