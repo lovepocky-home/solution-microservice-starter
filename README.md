@@ -9,6 +9,8 @@ Online Sample Site:
 - https://books.pocki.cc `app`
   - a sample fullstack app: angular + nest.js  
     <img src="./docs/img/sample-books-ui.png" alt="drawing" width="200"/>
+- https://books.pocki.cc/api/v1 `backend rest api doc`
+  <img src="./docs/img/api-swagger.png" alt="drawing" width="300"/>
   - you can login in with oauth accounts like google/github
 - https://kubeview.pocki.cc `overall sight of services`  
     <img src="./docs/img/sample-kubeview.png" alt="drawing" width="600"/>
@@ -99,12 +101,27 @@ graph TD
 
 ## Support Features
 
-- [x] deploy by helm
-- [x] static type
+- [x] containerized
+  - [x] deployment arranged by helm
+- [x] static type: typescript
 - [ ] code gen
   - [x] rest-api(code-first): backend-code --> swagger/openapi schema/docs --> frontend client code
   - [ ] graphql (nodejs)
-- [x] monorepo
+- [x] monorepo  
+
+  ```bash
+  # folder tree
+  .
+  ├── docs
+  ├── packages
+  │   ├── admin-service
+  │   ├── admin-ui
+  │   ├── books-service
+  │   ├── books-ui
+  │   └── task-service
+  └── thirdparts
+  ```
+
 - [x] configs are transparent to code: config depends on environment
 - [x] test
   - [x] local test friendly
@@ -113,9 +130,6 @@ graph TD
     <img src="./docs/img/cov.png" alt="drawing" width="600"/>
     `src details`  
     <img src="./docs/img/cov2.png" alt="drawing" width="600"/>
-- [ ] monitor
-  - [ ] distributed tracing
-  - [ ] logging
 
 ## Road map
 
@@ -135,6 +149,9 @@ graph TD
   - [ ] testing and report
 - [ ] CD
   - [ ] multi environment
+- [ ] monitor
+  - [ ] distributed tracing
+  - [ ] logging
 
 ## Contact Me
 
