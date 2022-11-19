@@ -10,7 +10,7 @@ Online Sample Site:
   - a sample fullstack app: angular + nest.js  
     <img src="./docs/img/sample-books-ui.png" alt="drawing" width="200"/>
   - you can login in with oauth accounts like google/github
-- https://kubeview.pocki.cc `overall sight of services`
+- https://kubeview.pocki.cc `overall sight of services`  
     <img src="./docs/img/sample-kubeview.png" alt="drawing" width="400"/>
 - helm repo is not public, containing environment specific configs
 
@@ -106,8 +106,13 @@ graph TD
   - [ ] graphql (nodejs)
 - [x] monorepo
 - [x] configs are transparent to code: config depends on environment
-- [ ] test
-  - [ ] local test friendly
+- [x] test
+  - [x] local test friendly
+  - [x] e2e test coverage  
+    `overall coverage`  
+    <img src="./docs/img/cov.png" alt="drawing" width="600"/>
+    `src details`  
+    <img src="./docs/img/cov2.png" alt="drawing" width="600"/>
 - [ ] monitor
   - [ ] distributed tracing
   - [ ] logging
@@ -119,13 +124,17 @@ graph TD
   - [x] public/internal access
   - [ ] update account: username/password, user-info
 - [ ] testing
-  - [ ] temporary service: database, etc..
+  - [x] temporary service: database, etc..
   - [ ] mock third-party service
 - [ ] log collect
 - [ ] polyglot backend
 - [ ] ? RPC
 - [ ] ? task queue
-- [ ] ~~distributed transaction~~
+- [ ] CI
+  - [ ] build image
+  - [ ] testing and report
+- [ ] CD
+  - [ ] multi environment
 
 ## Contact Me
 
